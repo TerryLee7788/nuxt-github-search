@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node .claude/hooks/inject-skill-files.cjs",
+            "timeout": 10,
+            "statusMessage": "Loading project skill files..."
+          }
+        ]
+      }
+    ]
+  }
+}
