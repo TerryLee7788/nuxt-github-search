@@ -14,7 +14,7 @@ export default defineNuxtConfig({
       title: 'Nuxt GitHub Search',
       meta: [
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'description', content: '用 Nuxt 3 + GitHub API 搜尋 repo 的範例' },
+        { name: 'description', content: '用 Nuxt 4 + GitHub API 搜尋 repo 的範例' },
       ],
     },
   },

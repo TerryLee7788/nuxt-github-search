@@ -1,6 +1,6 @@
 # Nuxt GitHub Search
 
-用 Nuxt 3 + GitHub REST API 做的最小範例:首頁搜尋 repo、點進去看單一 repo 詳細頁。
+用 Nuxt 4 + GitHub REST API 做的最小範例:首頁搜尋 repo、點進去看單一 repo 詳細頁。
 
 ## 執行
 
@@ -21,12 +21,13 @@ npm run dev
 ```
 nuxt-github-search/
 ├── nuxt.config.ts                     # runtimeConfig 收 GITHUB_TOKEN(只在 server 端)
-├── app.vue                            # 外框 + 全域樣式 + <NuxtPage/>
-├── types/github.ts                    # GitHub API 回傳型別
-├── pages/
-│   ├── index.vue                      # 搜尋列表頁(/)
-│   └── repos/[owner]/[name].vue       # 詳細頁(/repos/:owner/:name)
-└── server/api/
+├── types/github.ts                    # GitHub API 回傳型別(app / server 共用,以 ~~/types 引用)
+├── app/                               # Nuxt 4 srcDir(~ / @ 指向這裡)
+│   ├── app.vue                        # 外框 + 全域樣式 + <NuxtPage/>
+│   └── pages/
+│       ├── index.vue                  # 搜尋列表頁(/)
+│       └── repos/[owner]/[name].vue   # 詳細頁(/repos/:owner/:name)
+└── server/api/                        # 留在專案根目錄(~~ / @@ 指向根目錄)
     ├── search.get.ts                  # 代理 GitHub 搜尋
     └── repo/[owner]/[name].get.ts     # 代理單一 repo
 ```

@@ -1,4 +1,4 @@
-import type { RepoDetail } from '~/types/github'
+import type { RepoDetail } from '~~/types/github'
 
 // GET /api/repo/:owner/:name  ->  對應 GitHub GET /repos/{owner}/{repo}
 export default defineEventHandler(async (event): Promise<RepoDetail> => {

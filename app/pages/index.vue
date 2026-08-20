@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { GitHubSearchResponse, RepoSummary } from '~/types/github'
+import type { GitHubSearchResponse, RepoSummary } from '~~/types/github'
 
 const route = useRoute()
 const router = useRouter()

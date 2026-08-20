@@ -16,7 +16,7 @@ This app's server routes exist only to proxy `api.github.com` so the GitHub toke
 
 Every handler follows this structure (see `server/api/search.get.ts` and `server/api/repo/[owner]/[name].get.ts`):
 
-1. `export default defineEventHandler(async (event): Promise<T> => { ... })` — always type the return as the shared type from `~/types/github`.
+1. `export default defineEventHandler(async (event): Promise<T> => { ... })` — always type the return as the shared type from `~~/types/github` (Nuxt 4: `types/` lives at the project root, outside `app/`, so use the root-relative `~~`/`@@` alias — `~/types/github` would resolve inside `app/` and fail).
 2. Read input via `getQuery(event)` for query params or `getRouterParam(event, 'name')` for path params. Validate required params up front and `throw createError({ statusCode: 400, ... })` if missing (see the repo-detail handler's owner/name check) — don't let a missing param fall through to an upstream 404/500.
 3. Pull the token via `useRuntimeConfig().githubToken` (never `process.env` directly in a handler — the config indirection is what keeps it server-only per `nuxt.config.ts`). Build headers:
    ```ts

@@ -4,7 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-A minimal Nuxt 3 example app: search GitHub repositories on the home page, click through to a repo detail page. All GitHub API calls are proxied through Nuxt server routes so the GitHub token never reaches the client. Repo README (in Traditional Chinese) is the primary source of intent for this project — read it for the rationale behind the server-proxy design.
+A minimal Nuxt 4 example app: search GitHub repositories on the home page, click through to a repo detail page. All GitHub API calls are proxied through Nuxt server routes so the GitHub token never reaches the client. Repo README (in Traditional Chinese) is the primary source of intent for this project — read it for the rationale behind the server-proxy design.
+
+**Directory layout (Nuxt 4):** client-side code lives under `app/` (the srcDir) — `app/app.vue`, `app/pages/`. `server/`, `types/`, and `nuxt.config.ts` stay at the project root. The `~`/`@` aliases point at `app/`; `~~`/`@@` point at the project root. Because `types/github.ts` is shared between `app/` pages and `server/` handlers, it is imported as `~~/types/github` (root-relative) from both — not `~/types/github`, which would only resolve inside `app/`.
 
 ## Commands
 
@@ -30,4 +32,4 @@ Copy `.env.example` to `.env` and set `GITHUB_TOKEN` to raise GitHub API rate li
 
 ## Route layout
 
-The detail page and its API route live where Nuxt's file-based routers expect them: `pages/repos/[owner]/[name].vue` → `/repos/:owner/:name`, and `server/api/repo/[owner]/[name].get.ts` → `/api/repo/:owner/:name`. (These were originally misplaced at the repo root / directly under `server/api/`, which silently broke both routes — if either ever ends up back outside `pages/` or `server/api/repo/`, that's why.)
+The detail page and its API route live where Nuxt's file-based routers expect them: `app/pages/repos/[owner]/[name].vue` → `/repos/:owner/:name`, and `server/api/repo/[owner]/[name].get.ts` → `/api/repo/:owner/:name`. (These were originally misplaced at the repo root / directly under `server/api/`, which silently broke both routes — if either ever ends up back outside `app/pages/` or `server/api/repo/`, that's why.)

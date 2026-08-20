@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { RepoDetail } from '~/types/github'
+import type { RepoDetail } from '~~/types/github'
 
 const route = useRoute()
 const owner = route.params.owner as string

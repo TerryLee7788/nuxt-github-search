@@ -1,4 +1,4 @@
-import type { GitHubSearchResponse } from '~/types/github'
+import type { GitHubSearchResponse } from '~~/types/github'
 
 // GET /api/search?q=vue&page=1
 // 對 GitHub 的呼叫全部在 server 端完成:token 不外洩、client 也不會直接吃到 GitHub 的 CORS / rate limit。
