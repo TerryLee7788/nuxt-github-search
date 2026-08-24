@@ -25,7 +25,7 @@ const favorites = useFavoritesStore()
     </main>
 
     <footer class="border-t border-border p-5 text-center text-[13px] text-muted">
-      資料來源 GitHub REST API · Nuxt 3 範例
+      資料來源 GitHub REST API · Nuxt 4 範例
     </footer>
   </div>
 </template>
