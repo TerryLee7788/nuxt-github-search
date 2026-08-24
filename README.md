@@ -23,9 +23,15 @@ nuxt-github-search/
 ├── nuxt.config.ts                     # runtimeConfig 收 GITHUB_TOKEN(只在 server 端)
 ├── types/github.ts                    # GitHub API 回傳型別(app / server 共用,以 ~~/types 引用)
 ├── app/                               # Nuxt 4 srcDir(~ / @ 指向這裡)
-│   ├── app.vue                        # 外框 + 全域樣式 + <NuxtPage/>
+│   ├── app.vue                        # 外框 + <NuxtPage/>(Tailwind utility class 撰寫樣式)
+│   ├── assets/css/main.css            # Tailwind 進入點 + GitHub 暗色主題 @theme tokens
+│   ├── components/RepoCard.vue        # 共用的 repo 卡片(搜尋結果 / 收藏清單共用)
+│   ├── stores/favorites.ts            # Pinia store:收藏的 repo(持久化到 localStorage)
+│   ├── plugins/favorites.client.ts    # client-only,app mounted 後才讀 localStorage 水合 store
+│   ├── utils/format.ts                # formatNumber / formatDate,auto-import
 │   └── pages/
 │       ├── index.vue                  # 搜尋列表頁(/)
+│       ├── favorites.vue              # 我的收藏(/favorites)
 │       └── repos/[owner]/[name].vue   # 詳細頁(/repos/:owner/:name)
 └── server/api/                        # 留在專案根目錄(~~ / @@ 指向根目錄)
     ├── search.get.ts                  # 代理 GitHub 搜尋

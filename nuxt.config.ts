@@ -1,7 +1,17 @@
+import tailwindcss from '@tailwindcss/vite'
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2025-01-01',
   devtools: { enabled: true },
+
+  modules: ['@pinia/nuxt'],
+
+  css: ['~/assets/css/main.css'],
+
+  vite: {
+    plugins: [tailwindcss()],
+  },
 
   runtimeConfig: {
     // 只在 server 端可讀,不會被打包進 client bundle。
