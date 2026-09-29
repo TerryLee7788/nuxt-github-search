@@ -11,16 +11,8 @@ export default defineEventHandler(async (event): Promise<GitHubSearchResponse> =
     return { total_count: 0, incomplete_results: false, items: [] }
   }
 
-  const config = useRuntimeConfig()
-  const headers: Record<string, string> = {
-    Accept: 'application/vnd.github+json',
-    'X-GitHub-Api-Version': '2022-11-28',
-  }
-  if (config.githubToken) headers.Authorization = `Bearer ${config.githubToken}`
-
   try {
-    return await $fetch<GitHubSearchResponse>('https://api.github.com/search/repositories', {
-      headers,
+    return await githubFetch<GitHubSearchResponse>('/search/repositories', {
       query: { q: keyword, sort: 'stars', order: 'desc', per_page, page },
     })
   } catch (e: any) {
